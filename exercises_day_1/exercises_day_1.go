@@ -33,3 +33,27 @@ func MaxDiff(numbers []int) int {
 
 	return max - min
 }
+
+func RemDups(strings []string) (result []string) {
+	for _, str := range strings {
+		var strNoDups string
+		var prevChar string
+
+		for i, c := range str {
+			if i == 0 {
+				prevChar = string(c)
+			}
+			thisChar := string(c)
+
+			if thisChar != prevChar || i == 0 {
+				strNoDups += thisChar
+			}
+
+			prevChar = thisChar
+		}
+
+		result = append(result, strNoDups)
+	}
+
+	return result
+}

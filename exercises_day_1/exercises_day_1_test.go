@@ -1,11 +1,21 @@
 package exercises_day_1
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func assertEqualsInt(t *testing.T, got, want int) {
 	t.Helper()
 	if got != want {
 		t.Errorf("Got %d but wanted %d", got, want)
+	}
+}
+
+func assertEqualsStringSlices(t *testing.T, got, want []string) {
+	t.Helper()
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("Got %v but wanted %v", got, want)
 	}
 }
 
@@ -36,9 +46,17 @@ func TestMaxDiff(t *testing.T) {
 		assertEqualsInt(t, got, want)
 	})
 
-	t.Run("max diff 3 - (-4)", func(t* testing.T) {
-		got := MaxDiff([]int{1,2,3,-4})
+	t.Run("max diff 3 - (-4)", func(t *testing.T) {
+		got := MaxDiff([]int{1, 2, 3, -4})
 		want := 7
 		assertEqualsInt(t, got, want)
+	})
+}
+
+func TestRemDups(t *testing.T) {
+	t.Run("3 strings, 2 have dups", func(t *testing.T) {
+		got := RemDups([]string{"abracadabra", "allottee", "assessee"})
+		want := []string{"abracadabra", "alote", "asese"}
+		assertEqualsStringSlices(t, got, want)
 	})
 }

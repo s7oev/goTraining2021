@@ -11,3 +11,25 @@ func PositiveSum(numbers []int) int {
 
 	return sum
 }
+
+func MaxDiff(numbers []int) int {
+	var min int
+	var max int
+
+	for i, number := range numbers {
+		if i == 0 {
+			min = number
+			max = number
+		}
+
+		if number < min {
+			min = number
+		}
+
+		if number > max {
+			max = number
+		}
+	}
+
+	return max - min
+}

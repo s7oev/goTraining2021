@@ -101,7 +101,7 @@ func TestFighterAttackMethod(t *testing.T) {
 			damagePerAttack: 17,
 		}
 
-		got := (&givenF1).fight(&givenF2)
+		got := givenF1.fight(&givenF2)
 		want := "draw"
 
 		assert(t, got, want)
